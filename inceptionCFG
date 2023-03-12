@@ -1,0 +1,23 @@
+#!/bin/sh
+
+LOGIN="halvarez"
+
+#installing packages
+	apt -y vim
+	apt -y sudo
+	apt -y curl
+	apt -y wget
+	apt -y git
+
+#add /usr/sbin to variable environment for all user
+	 echo "Adding PATH /usr/sbin..."
+	 echo "export PATH=$PATH:/usr/sbin" > /etc/profile.d/add_sbin.sh
+	 source /etc/profile.d/add_sbin.sh
+	 echo "/usr/sbin set ! :)"
+
+#add user42 as group and LOGIN in user42
+	 echo "Managing groups..."
+	 groupadd -f user42
+	 gpasswd -a ${LOGIN} user42
+	 echo "Group and user set ! :)"
+
