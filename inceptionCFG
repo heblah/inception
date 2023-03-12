@@ -3,11 +3,11 @@
 LOGIN="halvarez"
 
 #installing packages
+	apt -y git
 	apt -y vim
 	apt -y sudo
 	apt -y curl
 	apt -y wget
-	apt -y git
 
 #add /usr/sbin to variable environment for all user
 	 echo "Adding PATH /usr/sbin..."
@@ -16,8 +16,7 @@ LOGIN="halvarez"
 	 echo "/usr/sbin set ! :)"
 
 #add user42 as group and LOGIN in user42
-	 echo "Managing groups..."
-	 groupadd -f user42
-	 gpasswd -a ${LOGIN} user42
-	 echo "Group and user set ! :)"
+	 echo "Adding ${LOGIN} to sudo members..."
+	 usermod -aG sudo ${LOGIN}
+	 echo "${LOGIN} added to sudo ! :)"
 
